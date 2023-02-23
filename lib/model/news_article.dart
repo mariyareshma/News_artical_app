@@ -5,7 +5,7 @@ class NewsArticles {
   });
 
   final Pagination? pagination;
-  final List<NewsAricle> data;
+  final List<NewsArticle> data;
 
   factory NewsArticles.fromJson(Map<String, dynamic> json) {
     return NewsArticles(
@@ -14,14 +14,14 @@ class NewsArticles {
           : Pagination.fromJson(json["pagination"]),
       data: json["data"] == null
           ? []
-          : List<NewsAricle>.from(
-              json["data"]!.map((x) => NewsAricle.fromJson(x))),
+          : List<NewsArticle>.from(
+              json["data"]!.map((x) => NewsArticle.fromJson(x))),
     );
   }
 }
 
-class NewsAricle {
-  NewsAricle({
+class NewsArticle {
+  NewsArticle({
     required this.author,
     required this.title,
     required this.description,
@@ -45,8 +45,8 @@ class NewsAricle {
   final String? country;
   final DateTime? publishedAt;
 
-  factory NewsAricle.fromJson(Map<String, dynamic> json) {
-    return NewsAricle(
+  factory NewsArticle.fromJson(Map<String, dynamic> json) {
+    return NewsArticle(
       author: json["author"],
       title: json["title"],
       description: json["description"],
