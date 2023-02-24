@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_artical_app/model/news_article.dart';
 import 'package:news_artical_app/views/news_article_widget.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../service/services.dart';
 
@@ -10,11 +11,10 @@ class NewsHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('My News Friend'),
-      ),
-      body: getBody(),
-    );
+        appBar: AppBar(
+          title: const Text('India daily News'),
+        ),
+        body: getBody());
   }
 
   Widget getBody() {
@@ -27,7 +27,7 @@ class NewsHome extends StatelessWidget {
         if (snapshot.hasData) {
           return getListView(snapshot.data);
         } else {
-          return const Center(child: CircularProgressIndicator());
+          return getFutureBuilder();
         }
       },
       future: getNewsArticalDetails(),
@@ -49,6 +49,23 @@ class NewsHome extends StatelessWidget {
       articleWidgets.add(articleWidget);
     }
 
-    return ListView(children: articleWidgets);
+    return ListView(
+      children: articleWidgets,
+    );
+  }
+
+  Widget getFutureBuilder() {
+    return Center(
+      child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            CircularProgressIndicator(),
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text('Loading News'),
+            )
+          ]),
+    );
   }
 }

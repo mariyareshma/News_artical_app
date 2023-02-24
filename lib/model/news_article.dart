@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class NewsArticles {
   NewsArticles({
     required this.pagination,
@@ -58,6 +60,12 @@ class NewsArticle {
       country: json["country"],
       publishedAt: DateTime.tryParse(json["published_at"]),
     );
+  }
+  String articleDate() {
+    if (publishedAt != null) {
+      return DateFormat('dd-MMM').format(publishedAt!);
+    }
+    return '';
   }
 }
 
