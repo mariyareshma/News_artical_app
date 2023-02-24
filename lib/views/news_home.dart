@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_artical_app/model/news_article.dart';
 import 'package:news_artical_app/views/news_article_widget.dart';
-import 'package:share_plus/share_plus.dart';
 
 import '../service/services.dart';
 
