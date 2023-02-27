@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news_artical_app/model/news_article.dart';
 import 'package:news_artical_app/views/news_article_widget.dart';
 
+import '../service/news_data.dart';
 import '../service/services.dart';
 
 class NewsHome extends StatelessWidget {
@@ -29,7 +30,7 @@ class NewsHome extends StatelessWidget {
           return getFutureBuilder();
         }
       },
-      future: getNewsArticalDetails(),
+      future: readAllFile(),
     );
   }
 

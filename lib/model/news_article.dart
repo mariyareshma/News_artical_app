@@ -20,6 +20,8 @@ class NewsArticles {
               json["data"]!.map((x) => NewsArticle.fromJson(x))),
     );
   }
+
+  toJson() {}
 }
 
 class NewsArticle {
